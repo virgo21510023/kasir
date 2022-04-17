@@ -1,3 +1,10 @@
+<?php
+
+require 'function.php';
+$buku = mysqli_query($connection, "SELECT * FROM buku");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -59,7 +66,7 @@
                                 </div>
                                 <div>   
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        Open modal
+                                        Tambah data buku
                                     </button>
                                 </div>
                             </div>
@@ -75,33 +82,37 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>No</th>
+                                            <th>Judul Buku</th>
+                                            <th>Penulis</th>
+                                            <th>Gambar</th>
+                                            <th>Harga</th>
+                                            <th>Stok</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>No</th>
+                                            <th>Judul Buku</th>
+                                            <th>Penulis</th>
+                                            <th>Gambar</th>
+                                            <th>Harga</th>
+                                            <th>Stok</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        <?php $i=1; ?>
+                                        <?php foreach($buku as $bku): ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td><?= $i; ?></td>
+                                            <td><?= $bku['judul_buku']; ?></td>
+                                            <td><?= $bku['penulis']; ?></td>
+                                            <td><img height="120px" align="middle" src="image/<?= $bku['gambar']; ?>"></td>
+                                            <td><?= $bku['harga']; ?></td>
+                                            <td><?= $bku['stok']; ?></td>
                                         </tr>
+                                        <?php $i++; ?>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -143,7 +154,7 @@
           </div>
 
           <!-- Modal body -->
-          <form method="POST">
+          <form method="POST" action="" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="">
                 <input type="text" name="judul_buku" class="form-control" placeholder="Judul buku">
