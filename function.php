@@ -23,4 +23,12 @@ if(isset($_POST["login"])){
 	}
 }
 
+if(isset($_POST['tambahbuku'])){
+	$judul_buku = $_POST['judul_buku'];
+	$penulis = $_POST['penulis'];
+	$gambar = $_POST['gambar'];
+	$harga = $_POST['harga'];
+	$stok = $_POST['stok'];
+}
+
 ?>
