@@ -56,4 +56,43 @@ if(isset($_POST['tambahbuku'])){
 	
 }
 
+if(isset($_POST['tambahpelanggan'])){
+	$nama_pelanggan = $_POST['nama_pelanggan'];
+	$notelp = $_POST['notelp'];
+	$alamat = $_POST['alamat'];
+
+	$tambah_pelanggan = (mysqli_query($connection,"INSERT INTO pelanggan (nama_pelanggan, notelp, alamat) VALUES ('$nama_pelanggan', '$notelp', '$alamat')"));
+
+	if ($nama_pelanggan) {
+		header('location:pelanggan.php');
+	} else {
+		echo"
+			<script>
+				alert('Gagal menambahkan data')
+			</script>
+		";
+	}
+
+	
+}
+
+if(isset($_POST['tambahpesanan'])){
+	$id_pelanggan = $_POST['id_pelanggan'];
+
+	$tambah_pesanan = (mysqli_query($connection,"INSERT INTO pesanan (id_pelanggan) VALUES ('$id_pelanggan')"));
+
+	if ($tambah_pesanan) {
+		header('location:index.php');
+	} else {
+		echo"
+			<script>
+				alert('Gagal menambahkan data')
+			</script>
+		";
+	}
+
+	
+}
+
+
 ?>

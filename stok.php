@@ -43,6 +43,10 @@ $buku = mysqli_query($connection, "SELECT * FROM buku");
                                 <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>
                                 Barang Masuk
                             </a>
+                            <a class="nav-link" href="pelanggan.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                                Kelola Pelanggan
+                            </a>
                             <a class="nav-link" href="logout.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                                 Logout
@@ -76,7 +80,7 @@ $buku = mysqli_query($connection, "SELECT * FROM buku");
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                Data Stok Buku
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
