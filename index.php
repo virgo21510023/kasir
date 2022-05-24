@@ -64,7 +64,7 @@ require 'function.php';
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Kelola Pesanan</h1>
                         <div class="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-3 col-md-6 mb-2">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Jumlah Pesanan  : </div>
                                 </div>
@@ -117,7 +117,7 @@ require 'function.php';
                                             <td><?= $tanggal ?></td>
                                             <td><?= $nama_pelanggan ?> - <?= $alamat; ?></td>
                                             <td>Jumlah</td>
-                                            <td> <a href="view.php" class="btn btn-primary" target="blank"> Tampilkan</a> | Hapus</td>
+                                            <td> <a href="view.php?idp=<?=$id_pesanan;?>" class="btn btn-primary" target="blank"> Tampilkan</a> | Hapus</td>
                                         </tr>
                                     <?php } ?>
                                     </tbody>

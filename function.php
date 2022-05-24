@@ -72,8 +72,6 @@ if(isset($_POST['tambahpelanggan'])){
 			</script>
 		";
 	}
-
-	
 }
 
 if(isset($_POST['tambahpesanan'])){
@@ -90,8 +88,24 @@ if(isset($_POST['tambahpesanan'])){
 			</script>
 		";
 	}
+}
 
-	
+if(isset($_POST['tambahbuku'])){
+	$id_buku = $_POST['id_buku'];
+	$idp = $_POST['idp'];
+	$qty = $_POST['qty'];
+
+	$insert = (mysqli_query($connection,"INSERT INTO detail_pesanan (id_pesanan, id_buku, qty) VALUES ('$idp', '$id_buku', '$qty')"));
+
+	if ($insert) {
+		header("location:view.php?idp=$idp");
+	} else {
+		echo"
+			<script>
+				alert('Gagal menambahkan data')
+			</script>
+		";
+	}
 }
 
 
