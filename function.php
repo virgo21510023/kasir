@@ -90,22 +90,35 @@ if(isset($_POST['tambahpesanan'])){
 	}
 }
 
-if(isset($_POST['tambahbuku'])){
+if(isset($_POST['tambahbuku2'])){
 	$id_buku = $_POST['id_buku'];
 	$idp = $_POST['idp'];
 	$qty = $_POST['qty'];
 
-	$insert = (mysqli_query($connection,"INSERT INTO detail_pesanan (id_pesanan, id_buku, qty) VALUES ('$idp', '$id_buku', '$qty')"));
+	$hitung1 = mysqli_query($connection, "SELECT * FROM buku WHERE id_buku='$id_buku'");
+	$hitung2 = mysqli_fetch_array($hitung1);
+	$stoksekarang = $hitung2["stok"];
 
-	if ($insert) {
-		header("location:stok.php");
+	if ($stoksekarang>=$qty) {
+		$selisih = $stoksekarang-$qty;
+
+		$insert = (mysqli_query($connection,"INSERT INTO detail_pesanan (id_pesanan, id_buku, qty) VALUES ('$idp', '$id_buku', '$qty')"));
+		$update = mysqli_query($connection,"UPDATE buku SET stok='$selisih' WHERE id_buku='$id_buku'");
+
+		if ($insert && $update) {
+			header("location:view.php?idp=".$idp);
+		} else {
+			echo"
+				<script>
+					alert('Gagal menambahkan data')
+				</script>
+			";
+		}
 	} else {
-		echo"
-			<script>
-				alert('Gagal menambahkan data')
-			</script>
-		";
+		
 	}
+
+	
 }
 
 

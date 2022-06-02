@@ -184,14 +184,15 @@ if (isset($_GET['idp'])) {
                         $id_buku = $bku["id_buku"];
                         $judul_buku = $bku["judul_buku"];
                         $penulis = $bku["penulis"];
+                        $stok = $bku["stok"];
                     ?>
-                    <option value="<?= $id_buku ;?>"> <?= $judul_buku; ?> - <?= $penulis; ?>
+                    <option value="<?= $id_buku ;?>"> <?= $judul_buku; ?> - <?= $penulis; ?> (Stok  : <?= $stok;?>)
                         
                     </option>
                     <?php
                     }
                     ?>
-                    <input type="number" name="qty" class="form-control mt-2" placeholder="Jumlah">
+                    <input type="number" name="qty" class="form-control mt-2" placeholder="Jumlah" min="1" required>
                     <input type="hidden" name="idp" value="<?= $idp; ?>">
                 </select>
             </div>
@@ -199,7 +200,7 @@ if (isset($_GET['idp'])) {
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" name="tambahbuku">Tambah</button>
+            <button type="submit" class="btn btn-success" name="tambahbuku2">Tambah</button>
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
           </div>
           </form>
