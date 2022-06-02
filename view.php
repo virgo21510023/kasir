@@ -1,6 +1,6 @@
 <?php
 
-require 'function.php';
+require 'ceklogin.php';
 
 if (isset($_GET['idp'])) {
     $idp = $_GET['idp'];
@@ -114,7 +114,7 @@ if (isset($_GET['idp'])) {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                            $get = mysqli_query($connection, "SELECT * FROM detail_pesanan p, buku bk WHERE p.id_buku=bk.id_buku");
+                                            $get = mysqli_query($connection, "SELECT * FROM detail_pesanan dp, buku bk WHERE dp.id_buku=bk.id_buku AND id_pesanan='$idp'");
                                             $i=1;
                                             while ($p=mysqli_fetch_array($get)) {
                                                 $qty = $p["qty"];
@@ -125,10 +125,10 @@ if (isset($_GET['idp'])) {
                                         <tr>
                                             <td><?= $i++;?></td>
                                             <td><?= $judul_buku ?></td>
-                                            <td><?= $harga ?></td>
-                                            <td><?= $qty ?></td>
-                                            <td><?= $subtotal ?></td>
-                                            <td> <a href="view.php?idp=<?=$id_pesanan;?>" class="btn btn-primary" target="blank"> Tampilkan</a> | Hapus</td>
+                                            <td>Rp. <?= number_format($harga) ?>,-</td>
+                                            <td><?= number_format($qty) ?></td>
+                                            <td>Rp. <?= number_format($subtotal) ?>,-</td>
+                                            <td> <a href="view.php?idp=<?=$id_pesanan;?>" class="btn btn-primary" target="blank"> Edit </a> | Delete </td>
                                         </tr>
                                     <?php } ?>
                                     </tbody>
@@ -178,7 +178,7 @@ if (isset($_GET['idp'])) {
                 <div class="">Pilih Buku</div>
                 <select name="id_buku" class="form-control mt-2">
                 <?php
-                    $getbuku = mysqli_query($connection, "SELECT * FROM buku");
+                    $getbuku = mysqli_query($connection, "SELECT * FROM buku WHERE id_buku NOT IN (SELECT id_buku FROM detail_pesanan WHERE id_pesanan = '$idp')");
 
                     while ($bku = mysqli_fetch_array($getbuku)) {
                         $id_buku = $bku["id_buku"];

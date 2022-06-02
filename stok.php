@@ -1,7 +1,9 @@
 <?php
 
-require 'function.php';
+require 'ceklogin.php';
 $buku = mysqli_query($connection, "SELECT * FROM buku");
+$h2 = mysqli_num_rows($buku);
+
 
 ?>
 
@@ -66,7 +68,7 @@ $buku = mysqli_query($connection, "SELECT * FROM buku");
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Jumlah Buku  : </div>
+                                    <div class="card-body">Jumlah Buku  : <?= $h2 ;?></div>
                                 </div>
                                 <div>   
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
@@ -112,7 +114,7 @@ $buku = mysqli_query($connection, "SELECT * FROM buku");
                                             <td><?= $bku['judul_buku']; ?></td>
                                             <td><?= $bku['penulis']; ?></td>
                                             <td><img height="120px" align="middle" src="image/<?= $bku['gambar']; ?>"></td>
-                                            <td><?= $bku['harga']; ?></td>
+                                            <td>Rp. <?= number_format($bku['harga']); ?></td>
                                             <td><?= $bku['stok']; ?></td>
                                         </tr>
                                         <?php $i++; ?>

@@ -38,11 +38,11 @@ if(isset($_POST['tambahbuku'])){
 	$tambah_buku = (mysqli_query($connection,"INSERT INTO buku (judul_buku, penulis, gambar, harga, stok) VALUES ('$judul_buku', '$penulis', '$gambar', '$harga', '$stok')"));
 
 	if ($tambah_buku) {
-		if (move_uploaded_file($tempname, $folder)) {
-            $msg = "Image uploaded successfully";
-        }else{
-            $msg = "Failed to upload image";
-    	}
+		move_uploaded_file($tempname, $folder);
+     //        $msg = "Image uploaded successfully";
+     //    }else{
+     //        $msg = "Failed to upload image";
+    	// }
 		header('location:stok.php');
 	} else {
 		echo"
@@ -98,7 +98,7 @@ if(isset($_POST['tambahbuku'])){
 	$insert = (mysqli_query($connection,"INSERT INTO detail_pesanan (id_pesanan, id_buku, qty) VALUES ('$idp', '$id_buku', '$qty')"));
 
 	if ($insert) {
-		header("location:view.php?idp=$idp");
+		header("location:stok.php");
 	} else {
 		echo"
 			<script>

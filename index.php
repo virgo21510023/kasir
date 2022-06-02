@@ -1,6 +1,9 @@
 <?php
 
-require 'function.php';
+require 'ceklogin.php';
+
+$h1 = mysqli_query($connection, "SELECT * FROM pesanan");
+$h2 = mysqli_num_rows($h1);
 
 ?>
 
@@ -66,7 +69,7 @@ require 'function.php';
                         <div class="row">
                             <div class="col-xl-3 col-md-6 mb-2">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Jumlah Pesanan  : </div>
+                                    <div class="card-body">Jumlah Pesanan  : <?= $h2; ?> </div>
                                 </div>
                                 <div>   
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
@@ -111,12 +114,15 @@ require 'function.php';
                                                 $tanggal = $p["tgl_pesanan"];
                                                 $nama_pelanggan = $p["nama_pelanggan"];
                                                 $alamat = $p["alamat"];
+
+                                            $hitungjumlah = mysqli_query($connection, "SELECT * FROM detail_pesanan WHERE id_pesanan = '$id_pesanan'");
+                                            $jumlah = mysqli_num_rows($hitungjumlah);
                                         ?>
                                         <tr>
                                             <td><?= $id_pesanan ?></td>
                                             <td><?= $tanggal ?></td>
                                             <td><?= $nama_pelanggan ?> - <?= $alamat; ?></td>
-                                            <td>Jumlah</td>
+                                            <td><?= $jumlah ?></td>
                                             <td> <a href="view.php?idp=<?=$id_pesanan;?>" class="btn btn-primary" target="blank"> Tampilkan</a> | Hapus</td>
                                         </tr>
                                     <?php } ?>
