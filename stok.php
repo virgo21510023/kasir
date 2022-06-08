@@ -46,7 +46,7 @@ $h2 = mysqli_num_rows($buku);
                                 Barang Masuk
                             </a>
                             <a class="nav-link" href="pelanggan.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Kelola Pelanggan
                             </a>
                             <a class="nav-link" href="logout.php">

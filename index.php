@@ -47,7 +47,7 @@ $h2 = mysqli_num_rows($h1);
                                 Barang Masuk
                             </a>
                             <a class="nav-link" href="pelanggan.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Kelola Pelanggan
                             </a>
                             <a class="nav-link" href="logout.php">
@@ -123,7 +123,10 @@ $h2 = mysqli_num_rows($h1);
                                             <td><?= $tanggal ?></td>
                                             <td><?= $nama_pelanggan ?> - <?= $alamat; ?></td>
                                             <td><?= $jumlah ?></td>
-                                            <td> <a href="view.php?idp=<?=$id_pesanan;?>" class="btn btn-primary" target="blank"> Tampilkan</a> | Hapus</td>
+                                            <td> 
+                                                <a href="view.php?idp=<?=$id_pesanan;?>" class="btn btn-primary" target="blank"> Tampilkan</a>
+                                                <a href="hapus.php?idp=<?=$id_pesanan;?>" class="btn btn-danger"> Hapus</a>    
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                     </tbody>
